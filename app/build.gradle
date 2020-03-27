@@ -1,0 +1,77 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.greedygame"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+def LifecycleVersion = '1.1.1'
+def Appcompat = '1.1.0'
+def CoreVersion = '1.2.0'
+def SupportLibVersion = '1.0.0'
+def MaterialLibVersion = '1.1.0'
+def RecyclerViewVersion = '1.1.0'
+def ConstraintLayoutVersion = '2.0.0-beta4'
+def RetrofitVersion = '2.4.0'
+def CoroutinesVersion = '0.27.0-eap13'
+def CoroutinesAdapterVersion = '0.9.2'
+def LoggingInterceptorVersion = '3.9.1'
+def GlideImageLoader = '4.11.0'
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    //SupportLibVersion
+    implementation "androidx.appcompat:appcompat:$Appcompat"
+    implementation "androidx.core:core-ktx:$CoreVersion"
+    implementation "androidx.recyclerview:recyclerview:$RecyclerViewVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$ConstraintLayoutVersion"
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$RetrofitVersion"
+    implementation "com.squareup.retrofit2:converter-moshi:$RetrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$RetrofitVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$CoroutinesVersion"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$CoroutinesAdapterVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$LoggingInterceptorVersion"
+
+
+    //dependency for architecture component
+    implementation "android.arch.lifecycle:extensions:$LifecycleVersion"
+    implementation "android.arch.lifecycle:viewmodel:$LifecycleVersion"
+
+    //design
+    implementation "androidx.legacy:legacy-support-v4:$SupportLibVersion"
+    implementation "com.google.android.material:material:$MaterialLibVersion"
+    implementation "androidx.cardview:cardview:$SupportLibVersion"
+
+    //Image Load
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+}
